@@ -2,7 +2,21 @@
 A deeper look into node.js 
 
 ## Notes taken in the process of following *Node.js in Practice by Alex R. Young and Marc Harter (Manning)*
-Note: I adapted the exercises to make use of ECMAScript 2015 Class syntax, as the book was published before theses where available. 
+Note: I adapted the examples to make use of ECMAScript 2015 Class syntax, as the book was published before these where available. 
+
+### Streams
+
+```javascript
+class MyWritable extends Writable {
+  constructor(options) {
+    super(options);
+  }
+
+  _write(chunk, encoding, callback) {
+    console.log(chunk);
+  }
+}
+```
 
 ### Buffers
 Most of the details of this goes over my head, but I will return in future. 
@@ -15,11 +29,34 @@ Most of the details of this goes over my head, but I will return in future.
 - binary protocals can be used for an efficient way to transport messages across a network or process. 
 
 ### Events
+```javascript
+const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+myEmitter.on('event', () => {
+  console.log('an event occurred!');
+});
+myEmitter.emit('event');
+```
 Familiar with this syntax from Electron and Sockets.io
 - inherit from EventEmitter class to create customs classes.
 - events distingued by a string specifying the events name.
--```.on``` to listen for events, ```.emit``` to trigger a event, ```.removeListener``` to remove. 
--```.once``` respond once
+-```.on``` to listen for events, ```.emit``` to trigger a event, ```.removeListener``` to remove. ```.once``` responds once.
+##### Error Handling
+- bind a listener to 'error' event to handle errors ```myEmitter.on('error', (err) => console.error('Error:', err)```
+- nodes domain API can be used to centralize error handling when more complex I/O operations are being used.
+##### Reflection
+*see reflection.js for examples*
+- dynamicly respond to changes to an instance of an EventEmitter, or query its listeners. utilizes ```"new-Listener``` event
+- ```myEmmiter.listeners(eventName)``` to query listeners - returns a copy of the array of listeners for the event named eventName. 
+- in larger projects avoid writing event names in strings and instead catagorize names with a central dictionary/object for   all the event names. ``` myEmitter.events = { event: 'eventName' }```
+
+
+
+
+
 
 
 
