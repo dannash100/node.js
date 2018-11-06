@@ -13,6 +13,8 @@ http.createServer((req, res) => {
     if (err) {
       res.statusCode = 500;
       res.end(String(err));
+    } else {
+      res.end(data);
     }
   });
 });
