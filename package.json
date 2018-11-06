@@ -5,7 +5,9 @@
   "repository": "https://github.com/dannash100/node.js.git",
   "author": "dannash100 <danster15@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.16.4"
+  },
   "devDependencies": {
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
