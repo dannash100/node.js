@@ -23,6 +23,15 @@ class MyWritable extends Writable {
 }
 ```
 
+#### Stream Classes
+| Class        | Usage           | 
+| ------------- |:-------------:|
+| Readable      | wrap around an underlying I/O source with a streamable API |
+| Writeable      | get output from a program to use elsewhere or send data elsewhere in the program |
+| Transform | change data by parsing it |
+| Duplex | wrap data source that can also receive messages |
+| PassThrough | extract data from streams without changing, for testing and analysis |
+
 ### Buffers
 Most of the details of this goes over my head, but I will return in future. 
 ``` let buf = Buffer(data, encoding) ```
