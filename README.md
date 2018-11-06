@@ -25,7 +25,7 @@ class MyWritable extends Writable {
 
 #### Stream Classes
 | Class        | Usage           | 
-| ------------- |:-------------:|
+| ------------- |-------------|
 | Readable      | wrap around an underlying I/O source with a streamable API |
 | Writeable      | get output from a program to use elsewhere or send data elsewhere in the program |
 | Transform | change data by parsing it |
