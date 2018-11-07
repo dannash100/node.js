@@ -5,7 +5,7 @@ A deeper look into node.js
 Note: I adapted the examples to make use of ECMAScript 2015 Class syntax, as the book was published before these where available. 
 
 ### Streams
-*See streams.js in examples for streaming static web servers and error handling*
+*See examples for parsers, webservers, error handling. 
 - Allows data to be dynamically processed as it is available and then released when its no longer needed.
 - managing and modeling data asynchronously and efficiently. 
 - ReadStreams can read files a buffers worth at a time and send it to the client. 
