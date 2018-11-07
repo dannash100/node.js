@@ -5,14 +5,18 @@ const fs = require('fs');
 const path = require('path');
 
 class JSONLineReader extends stream.Readable {
-  constructor(options, source) {
+  constructor(source, options) {
     super(options);
     this.source = source;
     this.foundLineError = false;
     this.buffer = '';
+
+    source.on('readable', () => {
+      this.read();
+    });
   }
 
-  _read() {
+  _read(size) {
     if (this.buffer.length === 0) {
       const chunk = this.source.read();
       this.buffer += chunk;
@@ -32,9 +36,11 @@ class JSONLineReader extends stream.Readable {
   }
 }
 
-const input = fs.createReadStream(path.join(__dirname, '/json-lines.txt'), {
+const input = fs.createReadStream(path.join(__dirname, '/json-lines.json'), {
   encoding: 'utf8',
 });
+
+
 const jsonLineReader = new JSONLineReader(input);
 
 jsonLineReader.on('object', (obj) => {
