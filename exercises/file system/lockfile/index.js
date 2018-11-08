@@ -6,4 +6,5 @@ locker.lock((err) => {
 
 // file modifications
 
-locker.unlock();
+locker.unlock(() => {
+});
