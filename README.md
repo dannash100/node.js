@@ -5,10 +5,11 @@ A deeper look into node.js
 Note: I adapted the examples to make use of ECMAScript 2015 Class syntax, as the book was published before these where available. 
 
 ### Streams
-*See examples for parsers, webservers, error handling. 
-- Allows data to be dynamically processed as it is available and then released when its no longer needed.
+*See examples for parsers, webservers, error handling.* 
+- allows data to be dynamically processed as it is available and then released when its no longer needed.
 - managing and modeling data asynchronously and efficiently. 
 - ReadStreams can read files a buffers worth at a time and send it to the client. 
+- allow interal buffer to be configured with size parameter.
 
 
 ```javascript
@@ -68,7 +69,8 @@ Familiar with this syntax from Electron and Sockets.io
 - in larger projects avoid writing event names in strings and instead catagorize names with a central dictionary/object for   all the event names. ``` myEmitter.events = { event: 'eventName' }```
 
 
-
+### File System
+- POSIX file operations, file streaming, bulk file I/O and file watching
 
 
 
