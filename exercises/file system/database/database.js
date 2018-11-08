@@ -40,6 +40,23 @@ class Database extends EventEmitter {
       database.emit('load');
     });
   }
+
+  get(key) {
+    return this._records[key] || null;
+  }
+
+  set(key, value, cb) {
+    const toWrite = `${JSON.stringify({ key, value })}\n`;
+
+    if (value == null) delete this._records[key];
+    else this._records[key] = value;
+
+    this._writeStream.write(toWrite, cb);
+  }
+
+  del(key, cb) {
+    return this.set(key, null, cb);
+  }
 }
 
 module.exports = Database;
