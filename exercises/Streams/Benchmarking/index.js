@@ -4,6 +4,8 @@
 const fs = require('fs');
 const zlib = require('zlib');
 
+/* hrtime gets precise nanosecond measurements */
+
 const benchStream = (inSize, outSize) => {
   const time = process.hrtime();
   let watermark = process.memoryUsage().rss;

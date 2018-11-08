@@ -72,9 +72,26 @@ Familiar with this syntax from Electron and Sockets.io
 ### File System
 - POSIX file operations, file streaming, bulk file I/O and file watching
 
+###### Lockfiles 
+- ensure the integrity of a file and that and data isn't lost when mutiple processes are accessing a file. 
+```javascript
+fs.open('config.lock', 'wx', () => {
+});
 
+fs.writeFile('config.lock', process.pid, {flags: 'wx'}, () => {
+});
 
-
+fs.mkdir('config.lock', (err) => {
+  if (err) return console.error(err);
+  fs.writeFile('config.lock/' + process.pid, (err) => {
+    if (err) return console.error(err)
+  })
+})
+```
+- wx flag - open in exclusive write mode 
+- writing process.pid to lockfile will expose what process had the lock last.
+- use mkdir to create a lockfile as a directory which stores the PID as a file
+- see exercises lockfile_module for example usage and mechanism to remove lockfiles when they are done. 
 
 
 
