@@ -5,6 +5,13 @@ const fs = require('fs');
 const stream = require('stream');
 const path = require('path');
 
+/*
+data turned into a string then iterated over character by character
+if character is a comma, add the previously collected data to the interal list of headers or values
+if character is a '\n' - record the previously collected field and then push json version to queue.
+headers are assumed to be on the first line
+*/
+
 class CSVParser extends stream.Transform {
   constructor(options) {
     super(options);
