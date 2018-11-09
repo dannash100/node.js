@@ -3,6 +3,16 @@
 const fs = require('fs');
 const { EventEmitter } = require('events');
 
+/*
+spits records on newlines
+reads data as it is available
+pop last record as it may be incomplete
+if a record is null, delete it.
+otherwise store the value for that key
+emit an error if an invalid record was found
+finally emit a load event when data is ready to be used.
+*/
+
 class Database extends EventEmitter {
   constructor(path) {
     super();

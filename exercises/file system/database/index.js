@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 
 const Database = require('./database');
