@@ -71,7 +71,7 @@ Familiar with this syntax from Electron and Sockets.io
 ### File System
 - POSIX file operations, file streaming, bulk file I/O and file watching
 
-###### Lockfiles 
+##### Lockfiles 
 *see exercises lockfile_module for example usage and mechanism to remove lockfiles when they are done.*
 
 - ensure the integrity of a file and that and data isn't lost when multiple processes are accessing a file. 
@@ -93,7 +93,19 @@ fs.mkdir('config.lock', (err) => {
 - writing process.pid to lockfile will expose what process had the lock last.
 - use mkdir to create a lockfile as a directory which stores the PID as a file
 
-###### Custom Databases
+##### Custom Databases
 *see database exercise for simple database module and usage*
 
-###### Watching Files
+### Networking
+
+##### Terminology
+| Term        | Description        | 
+| ------------- |-------------|
+| Layer      | A slice of related networking protocols. The application layer, where we work is the highest level, physical the lowest |
+| HTTP      | Application-layer client-server protocol built on TCP. |
+| TCP | Transmission Control Protocol - facilitates communication in both directions form the client to the server |
+| UDP | User Datagram Protocol - lightweight protocol chosen for speed over reliability |
+| Socket | combination of an IP address and a port number |
+| Packet | TCP packets or segments - combination of a chunk of data along with a header |
+| Datagram | UDP packet |
+| MTU | Maximum Transmission Unit - maximum size of protocol data unit. Each layer can have an MTU: IPv4 is at least 68 bytees Ethernet v2 is 1,500 bytes |
