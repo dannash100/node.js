@@ -104,8 +104,18 @@ fs.mkdir('config.lock', (err) => {
 | Layer      | A slice of related networking protocols. The application layer, where we work is the highest level, physical the lowest |
 | HTTP      | Application-layer client-server protocol built on TCP. |
 | TCP | Transmission Control Protocol - facilitates communication in both directions form the client to the server |
-| UDP | User Datagram Protocol - lightweight protocol chosen for speed over reliability |
+| UDP | User Datagram Protocol - lightweight protocol chosen for speed over reliability, cases when delivery isn't critical |
 | Socket | combination of an IP address and a port number |
 | Packet | TCP packets or segments - combination of a chunk of data along with a header |
 | Datagram | UDP packet |
-| MTU | Maximum Transmission Unit - maximum size of protocol data unit. Each layer can have an MTU: IPv4 is at least 68 bytees Ethernet v2 is 1,500 bytes |
+| MTU | Maximum Transmission Unit - maximum size of protocol data unit. Each layer can have an MTU: IPv4 is at least 68 bytes Ethernet v2 is 1,500 bytes |
+
+- when talking to Node - we are communicating with the higher level application and transport layers of the Internet Protocol suite.
+- in Internet Protocol, a host is identified by an IP address, IPv6 was developed because IP addresses where running out.
+- TCP connections and sockets are made with ```net``` module inside node. 
+- IPv4 and IPv6 records can be queried with the ```dns``` module. 
+- encryption TCP connections with ```tls``` module: *Transport Layer Security* 
+ * this type of encryption is called public key cartography
+ * both clients and servers must have private keys so clients can encrypt messages
+ * a solid understanding of tls principles is important in the deployment of web apps with node. 
+- non-blocking networking and thread pools - asynchronous network API's
