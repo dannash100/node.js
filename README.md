@@ -4,6 +4,11 @@ A deeper look into node.js
 ## Notes taken in the process of following *Node.js in Practice by Alex R. Young and Marc Harter (Manning) and Mastering Node.js by Sandro Pasquali & Kevin Faaborg (Packt)*
 Note: I adapted the examples to make use of ECMAScript 2015 Class syntax, as the book was published before these where available.
 
+### Event Loop
+
+- alloqws node to perform non-blocking I/O operations despite JS being signle-threaded
+- the event loop delegates many I/O operations to ```libuv``` which uses the OS itself such as thread pools.
+
 ### Streams
 *See examples for parsers, webservers, error handling.*
 - allows data to be dynamically processed as it is available and then released when its no longer needed.
@@ -59,6 +64,14 @@ myEmitter.emit('event');
 - inherit from EventEmitter class to create customs classes.
 - events distingued by a string specifying the events name.
 -```.on``` to listen for events, ```.emit``` to trigger a event, ```.removeListener``` to remove. ```.once``` responds once.
+
+
+#### Signals
+*see signals project*
+
+- listen and respond to POSIX signals - inter-process communications used in Unix and Unix-like systems.
+
+
 ##### Error Handling
 
 - bind a listener to 'error' event to handle errors ```myEmitter.on('error', (err) => console.error('Error:', err)```
@@ -121,3 +134,32 @@ fs.mkdir('config.lock', (err) => {
  * both clients and servers must have private keys so clients can encrypt messages
  * a solid understanding of tls principles is important in the deployment of web apps with node.
 - non-blocking networking and thread pools - asynchronous network API's
+
+### util
+
+#### util.promisify
+
+converts a callback-based function into a promised-based one
+
+```javascript
+const {promisify} = require('util');
+const fs = require('fs');
+
+let readFileAsync = promisify(fs.readFile);
+```
+
+### Process Object
+
+provides information on and controll over running processes
+
+**get command-line arugmenets**
+```$ node process.js 100000 100```
+```javascript
+process.argv[2] = 100000
+process.argv[3] = 100
+```
+
+### PID
+
+to find process ID of a running process use
+```ps aux | grep process_name.js```
