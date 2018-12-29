@@ -86,7 +86,7 @@ myEmitter.emit('event');
 ### File System
 - POSIX file operations, file streaming, bulk file I/O and file watching
 
-##### Lockfiles
+#### Lockfiles
 *see exercises lockfile_module for example usage and mechanism to remove lockfiles when they are done.*
 
 - ensure the integrity of a file and that and data isn't lost when multiple processes are accessing a file.
@@ -108,12 +108,22 @@ fs.mkdir('config.lock', (err) => {
 - writing process.pid to lockfile will expose what process had the lock last.
 - use mkdir to create a lockfile as a directory which stores the PID as a file
 
-##### Custom Databases
+#### Custom Databases
 *see database exercise for simple database module and usage*
+
+#### Watch File or Directory
+
+- Persistent(bool): Keeps process alive as long as there is something to do.
+
+```javascript
+fs.watch(__filename, { persistent: false }, (event, filename) => {
+})
+```
+*Persistent(bool): Keeps process alive as long as there is something to do.*
 
 ### Networking
 
-##### Terminology
+#### Terminology
 | Term        | Description        |
 | ------------- |-------------|
 | Layer      | A slice of related networking protocols. The application layer, where we work is the highest level, physical the lowest |
@@ -163,9 +173,20 @@ process.argv[3] = 100
 *see child_processes project*
 
 - create or fork processes when parralelizing execution or scaling a system.
+- forking will create another discrete instance of node.
+```javascript
+const cp = require("child_process");
+let child = cp.fork(__dirname + "file_name.js");
+```
+
+### Deferred execution
+
+- node introduces two new keywords in relation to timers.
+
+**process.nextTick**: form a list of nextTick callbacks at the head of the queue ahead of I/O or timer events but after the synchronous code tunning on V8 thread
+**setImmediate**: same as above except callbacks qued after I/O events. ```clearTimeout``` to cancel request to run in this way.
 
 ### PID
-
 to find process ID of a running process use
 ```ps aux | grep process_name.js```
 
