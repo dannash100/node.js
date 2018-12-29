@@ -1,6 +1,6 @@
-process.on("message", function(message, server) {
+process.on('message', (message, server) => {
   console.log(message);
-  server.on("connection", function(socket) {
-    socket.end("Child handled connection");
+  server.on('connection', (socket) => {
+    socket.end('Child handled connection');
   });
 });
