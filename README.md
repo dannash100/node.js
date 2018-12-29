@@ -195,7 +195,18 @@ let child = cp.fork(__dirname + "file_name.js");
 
 ### Generators and Iterators
 
-- functions that can be paused and resumed
+```javascript
+function* generator() {
+  yield 'result'
+}
+```
+
+- functions that can be paused and resumed, unlike a normal function a generator will ield a value and then stop- altho the function context is not lost. you can re-enter the function at a later time and continue yielding results.
+- on a first call to a generator we do not get a result but rather a generator object
+- expose a next method, which can pull out as many values as a Generator is able to yield.
+- Generators are usefull in situations when a series of values are promised, with individual vales being generated only when requested overtime.
+- with generators we can think of iteration as not running through a list, but of capturing a set of transition events overtime.
+- they could also be considered as a sequence of future values as Promises are a single future value.
 
 ---
 
