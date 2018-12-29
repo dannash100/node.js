@@ -158,6 +158,8 @@ const fs = require('fs');
 let readFileAsync = promisify(fs.readFile);
 ```
 
+## Processes
+
 ### Process Object
 
 provides information on and controll over running processes
@@ -185,6 +187,17 @@ let child = cp.fork(__dirname + "file_name.js");
 
 **process.nextTick**: form a list of nextTick callbacks at the head of the queue ahead of I/O or timer events but after the synchronous code tunning on V8 thread
 **setImmediate**: same as above except callbacks qued after I/O events. ```clearTimeout``` to cancel request to run in this way.
+
+### Unref and Ref
+*see timers/unref*
+
+- ```unref``` asserts that when this timer is the only event source remaining in the event loop, terminate the process. Undo this with ```ref```.
+
+### Generators and Iterators
+
+- functions that can be paused and resumed
+
+---
 
 ### PID
 to find process ID of a running process use
