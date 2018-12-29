@@ -159,7 +159,13 @@ process.argv[2] = 100000
 process.argv[3] = 100
 ```
 
+### Child Processes
+*see child_processes project*
+
+- create or fork processes when parralelizing execution or scaling a system.
+
 ### PID
 
 to find process ID of a running process use
 ```ps aux | grep process_name.js```
+
