@@ -6,7 +6,9 @@
   "author": "dannash100 <danster15@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "crypto": "^1.0.1",
+    "express": "^4.16.4",
+    "twit": "^2.2.11"
   },
   "devDependencies": {
     "eslint": "^5.8.0",

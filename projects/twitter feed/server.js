@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const fs = require('fs');
 const http = require('http');
 
@@ -44,3 +45,24 @@ const sendNext = (fd) => {
     }
   });
 };
+
+/*
+start process by opening tweets.txt and watch for changes, calling sendNext whenever
+new tweets are written. When the server is started, there may not exist a file to read from
+so, we poll using setTimeout until one exists
+*/
+
+const start = () => {
+  fs.open(tweetFile, 'r', (err, fd) => {
+    if (err) {
+      return setTimeout(start, 1000);
+    }
+    fs.watch(tweetFile, (event) => {
+      if (event === 'change') {
+        sendNext(fd);
+      }
+    });
+  });
+};
+
+start();
