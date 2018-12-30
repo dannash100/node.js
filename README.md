@@ -6,7 +6,7 @@ Note: I adapted the examples to make use of ECMAScript 2015 Class syntax, as the
 
 ### Event Loop
 
-- alloqws node to perform non-blocking I/O operations despite JS being signle-threaded
+- allows node to perform non-blocking I/O operations despite JS being single-threaded
 - the event loop delegates many I/O operations to ```libuv``` which uses the OS itself such as thread pools.
 
 ### Streams
@@ -14,7 +14,8 @@ Note: I adapted the examples to make use of ECMAScript 2015 Class syntax, as the
 - allows data to be dynamically processed as it is available and then released when its no longer needed.
 - managing and modeling data asynchronously and efficiently.
 - ReadStreams can read files a buffers worth at a time and send it to the client.
-- allow interal buffer to be configured with size parameter.
+- allow internal buffer to be configured with size parameter.
+- because a stream contains a buffer of bytes it can be redirected or piped to any other stream.
 
 
 ```javascript
@@ -26,8 +27,26 @@ class MyWritable extends Writable {
   _write(chunk, encoding, callback) {
     console.log(chunk);
   }
+
+  _read(byteSizeToRead) {
+  }
 }
 ```
+
+#### Options
+
+**Readable**
+- objectMode(bool): each chunk is expected to be a js object, the reader for this type of stream can work on assumption that each read() will produce a single object.
+
+**Writable**
+- highWaterMark(int): maximum number of bytes the buffer will accept prior to returning a false on writes. Defaults to 16KB
+- decodeStrings(bool): convert strings to buffers before writing. Defaults to true
+
+#### Stream Events
+
+**readable**: emitted as long as data is pushed to the stream
+**end**: when a null value is pushed to stream
+**drain**: when data reaches highWaterMark, Stream will emit a drain event when it is safe to write agian.
 
 #### Stream Classes
 | Class        | Usage           |
