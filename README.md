@@ -164,6 +164,11 @@ fs.watch(__filename, { persistent: false }, (event, filename) => {
  * a solid understanding of tls principles is important in the deployment of web apps with node.
 - non-blocking networking and thread pools - asynchronous network API's
 
+#### Proxying and Tunneling
+
+- Allow server to distribute a load to other servers, provide access to a secured server to users unable to connect to the server directly.
+- Have one server answering for more than one URL using a proxy to forawrd requests to the right recipitents.
+
 ### util
 
 #### util.promisify
