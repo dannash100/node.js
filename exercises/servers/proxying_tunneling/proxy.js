@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-sequences */
 const http = require('http');
 
 const server = new http.Server();
@@ -12,4 +14,4 @@ server.on('request', (request, socket) => {
   }), response => response.pipe(socket);
 });
 
-server.listen(8080, () => console.log('Proxy server listening on localhost:8080'))
+server.listen(8080, () => console.log('Proxy server listening on localhost:8080'));

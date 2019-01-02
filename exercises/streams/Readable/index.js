@@ -1,6 +1,9 @@
+/* eslint-disable func-names */
+/* eslint-disable no-unused-expressions */
+
 const stream = require('stream');
 
-const Feed = function (channel) {
+const Feed = function () {
   const readable = new stream.Readable({});
   const news = [
     'Big Win!',
@@ -16,7 +19,7 @@ const Feed = function (channel) {
   return readable;
 };
 
-let feed = new Feed();
+const feed = new Feed();
 
 feed.on('readable', () => {
   const data = feed.read();
