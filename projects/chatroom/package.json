@@ -1,10 +1,11 @@
 {
   "name": "projects",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "dependencies": {
-    "socket.io": "~0.9.6",
-    "mime": ">=1.4.1"
+    "mime": ">=1.4.1",
+    "mime-types": "^2.1.21",
+    "socket.io": "~0.9.6"
   }
 }
